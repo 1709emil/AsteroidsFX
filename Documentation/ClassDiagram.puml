@@ -1,0 +1,60 @@
+@startuml
+interface IPlayerService {
+  + update(deltaTime: float): void
+  + remove(): void
+  + handleInput(input: Input): void
+}
+
+interface IEnemyService {
+  + update(deltaTime: float): void
+  + remove(): void
+  + setTarget(player: Player): void
+}
+
+interface IWeaponService {
+  + update(deltaTime: float): void
+  + remove(): void
+  + fire(): void
+}
+
+interface IAsteroidService {
+  + spawn(): void
+  + destroy(): void
+  + update(deltaTime: float): void
+}
+
+class PlayerComponent {
+
+  + update(deltaTime: float): void
+  + remove(): void
+  + handleInput(input: Input): void
+}
+
+class EnemyComponent {
+
+  + update(deltaTime: float): void
+  + remove(): void
+  + setTarget(player: Player): void
+}
+
+class WeaponComponent {
+
+  + update(deltaTime: float): void
+  + remove(): void
+  + fire(): void
+}
+
+class AsteroidComponent {
+
+  + spawn(): void
+  + destroy(): void
+  + update(deltaTime: float): void
+}
+
+
+
+PlayerComponent ..|> IPlayerService
+EnemyComponent ..|> IEnemyService
+WeaponComponent ..|> IWeaponService
+AsteroidComponent ..|> IAsteroidService
+@enduml

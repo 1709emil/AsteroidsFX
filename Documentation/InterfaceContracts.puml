@@ -1,0 +1,19 @@
+@startuml
+interface IPlayerService {
+  + update(deltaTime: float): void
+  + remove(): void
+  + handleInput(input: Input): void
+}
+
+interface IEnemyService {
+  + update(deltaTime: float): void
+  + remove(): void
+  + setTarget(player: Player): void
+}
+interface IWeaponService {
+  + update(deltaTime: float): void
+  + remove(): void
+  + fire(): void
+}
+@enduml
+

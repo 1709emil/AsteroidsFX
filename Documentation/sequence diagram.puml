@@ -1,0 +1,38 @@
+@startuml
+actor Player
+participant GameEngine
+participant PlayerComponent
+
+Player -> GameEngine: handleInput(Input)
+GameEngine -> PlayerComponent: handleInput(Input)
+PlayerComponent -> PlayerComponent: update(deltaTime)
+PlayerComponent -> GameEngine: updatePlayerPosition()
+@enduml
+
+@startuml
+participant GameEngine
+participant EnemyComponent
+participant PlayerComponent
+
+GameEngine -> EnemyComponent: update(deltaTime)
+EnemyComponent -> PlayerComponent: setTarget(player)
+EnemyComponent -> EnemyComponent: moveTowardsPlayer()
+@enduml
+
+@startuml
+actor Player
+participant GameEngine
+participant WeaponComponent
+
+Player -> GameEngine: triggerWeapon()
+GameEngine -> WeaponComponent: fire()
+WeaponComponent -> GameEngine: handleProjectile()
+@enduml
+
+@startuml
+participant GameEngine
+participant AsteroidComponent
+
+GameEngine -> AsteroidComponent: spawn()
+AsteroidComponent -> AsteroidComponent: update(deltaTime)
+@enduml
