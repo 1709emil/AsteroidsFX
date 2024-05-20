@@ -20,7 +20,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
             
         for (Entity enemy : world.getEntities(Enemy.class)) {
             Entity player;
-            System.out.println("enemy found");
 
             for (Entity entity : world.getEntities()) {
                 if (entity instanceof IActor && entity != enemy) {
