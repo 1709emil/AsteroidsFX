@@ -47,7 +47,10 @@ public class EnemyControlSystem implements IEntityProcessingService {
         }
     }
 
-   private void MoveEnemy(Entity enemy, Entity player) {
+   void MoveEnemy(Entity enemy, Entity player) {
+        if (enemy == null || player == null) {
+            return;
+        }
         double x = player.getX() - enemy.getX();
         double y = player.getY() - enemy.getY();
         float distance = (float) Math.sqrt(x * x + y * y);
