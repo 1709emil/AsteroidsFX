@@ -1,0 +1,16 @@
+@startuml
+component "CommonBullet"{
+    interface BulletSPI{
+        + CreateBullet(Entity, GameData): Entity
+    }
+
+    class Bullet{
+    }
+
+}
+
+component "Common"{
+    class Entity{}
+}
+CommonBullet.Bullet --|> Common.Entity
+@enduml

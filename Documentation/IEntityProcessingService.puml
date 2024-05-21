@@ -1,0 +1,7 @@
+@startuml
+component Common {
+interface IEntityProcessingService {
+        + process(GameData , World) : void
+    }
+}
+@enduml

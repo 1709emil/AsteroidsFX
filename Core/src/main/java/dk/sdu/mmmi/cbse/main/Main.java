@@ -88,6 +88,7 @@ public class Main extends Application {
         new AnimationTimer() {
             @Override
             public void handle(long now) {
+                gameData.setDeltaTime(now);
                 update();
                 draw();
                 gameData.getKeys().update();

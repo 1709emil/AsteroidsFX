@@ -1,0 +1,8 @@
+@startuml
+component "Common" {
+    interface IGamePluginService {
+        + start(GameData , World) : void
+        + stop(GameData , World) : void
+    }
+}
+@enduml

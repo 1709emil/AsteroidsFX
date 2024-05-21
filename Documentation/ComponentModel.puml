@@ -1,0 +1,87 @@
+@startuml
+component "Common" {
+    interface "IGamePluginService" {
+
+    }
+    interface "IPostEntityProcessingService" {
+    }
+    class "Entity" {
+    }
+}
+
+component "Player" {
+    class "Player" {
+    }
+}
+
+component "Enemy" {
+    class "Enemy"
+
+}
+
+component CommonBullet{
+
+    class "Bullet"
+    interface "BulletSPI"
+}
+component "Bullet" {
+    class "BulletControlSystem"
+    class "BulletPlugin"
+
+}
+"BulletControlSystem" -(0- "IPostEntityProcessingService"
+"BulletControlSystem" -(0- "BulletSPI"
+"BulletPlugin" -(0- "IGamePluginService"
+CommonBullet --() "BulletSPI"
+Player.Player --|> Common.Entity
+Enemy.Enemy --|> Common.Entity
+Player -(0- "IPostEntityProcessingService"
+Player -(0- "IGamePluginService"
+Enemy -(0- "IPostEntityProcessingService"
+Enemy -(0- "IGamePluginService"
+
+@enduml
+@startuml
+
+component "Common" {
+    interface "IGamePluginService" {
+    }
+    interface "IPostEntityProcessingService" {
+    }
+    class "Entity" {
+    }
+}
+
+component "Player" {
+    class "Player" {
+    }
+}
+
+component "Enemy" {
+    class "Enemy" {
+    }
+}
+
+component "CommonBullet" {
+    class "Bullet"
+    interface "BulletSPI"
+}
+
+component "Bullet" {
+    class "BulletControlSystem"
+    class "BulletPlugin"
+}
+
+
+"BulletControlSystem" -down-|> "IPostEntityProcessingService"
+"BulletControlSystem" -down-|> "BulletSPI"
+"BulletPlugin" -down-|> "IGamePluginService"
+"CommonBullet" -down-  "BulletSPI"
+"Player.Player" -down-|> "Common.Entity"
+"Enemy.Enemy" -down-|> "Common.Entity"
+"Player" -down- "IPostEntityProcessingService"
+"Player" -down- "IGamePluginService"
+"Enemy" -down- "IPostEntityProcessingService"
+"Enemy" -down- "IGamePluginService"
+
+@enduml

@@ -3,6 +3,7 @@ package dk.sdu.mmmi.cbse.enemy;
 import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
+import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IActor;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
@@ -19,13 +20,18 @@ public class EnemyControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
             
         for (Entity enemy : world.getEntities(Enemy.class)) {
-            Entity player;
+            Entity player = null;
 
             for (Entity entity : world.getEntities()) {
                 if (entity instanceof IActor && entity != enemy) {
                     player = entity;
                     MoveEnemy(enemy, player);
                 }
+            }
+            if( 3 < ( ( System.nanoTime() - gameData.getDeltaTime() ) / 1000000 )) {
+                getBulletSPIs().stream().findFirst().ifPresent(
+                        spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
+                );
             }
 
         if (enemy.getX() < 0) {
