@@ -53,7 +53,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         }
     }
 
-   private void MoveEnemy(Entity enemy, Entity player) {
+   public void MoveEnemy(Entity enemy, Entity player) {
         if (enemy == null || player == null) {
             return;
         }
